@@ -14,8 +14,6 @@ public class Obstacle {
 
     }
 
-
-
     public Coordinates getPivot() {
         return pivot;
     }

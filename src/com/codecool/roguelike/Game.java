@@ -62,10 +62,10 @@ class Game extends KeyAdapter {
         this.obstacles.add(wall3);
         this.obstacles.add(wall4);
 
-
     }
 
     private void printBoard() {
+        clearScreen();
         String[][] board  = new String[width][height];
         board[this.player.getCoord().getX()][this.player.getCoord().getY()] = player.getSymbol();
 
@@ -119,6 +119,15 @@ class Game extends KeyAdapter {
         return x >= pivot.getX() && x < pivot.getX()+height
                 && y >= pivot.getY() && y < pivot.getY()+width;
     }
+
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("clear").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }
 
 

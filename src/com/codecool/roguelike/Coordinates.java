@@ -10,7 +10,6 @@ public class Coordinates {
     public static final Coordinates d = new Coordinates(0, 1);
 
 
-
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
