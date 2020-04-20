@@ -4,6 +4,13 @@ public class Coordinates {
     private int x;
     private int y;
 
+    public static final Coordinates w = new Coordinates(-1, 0);
+    public static final Coordinates s = new Coordinates(1, 0);
+    public static final Coordinates a = new Coordinates(0, -1);
+    public static final Coordinates d = new Coordinates(0, 1);
+
+
+
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
