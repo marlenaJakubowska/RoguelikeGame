@@ -2,7 +2,7 @@ package com.codecool.roguelike;
 
 public class Player {
     Coordinates coord;
-    String symbol = "\ud83d\udd7a";
+    String symbol = " @";
 
     public Player() {
         this.coord = new Coordinates(5,5);
