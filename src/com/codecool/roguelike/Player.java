@@ -1,13 +1,18 @@
 package com.codecool.roguelike;
 
-public class Player {
+public class Player extends Character {
     Coordinates coord;
-    String symbol = " @";
+    final String SYMBOL = " @";
 
     public Player() {
         this.coord = new Coordinates(5,5);
     }
 
+    public Coordinates getCoord() {
+        return this.coord;
+    }
+
+    @Override
     public void move(Coordinates direction) {
         System.out.println(direction.toString());
         int x = this.coord.getX() + direction.getX();
@@ -16,11 +21,8 @@ public class Player {
         this.coord = new Coordinates(x, y);
     }
 
-    public Coordinates getCoord() {
-        return this.coord;
-    }
-
+    @Override
     public String getSymbol() {
-        return this.symbol;
+        return this.SYMBOL;
     }
 }
