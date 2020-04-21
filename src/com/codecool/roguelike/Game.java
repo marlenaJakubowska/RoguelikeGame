@@ -19,6 +19,17 @@ class Game extends KeyAdapter {
         createObstacles();
     }
 
+    public static void runGame() {
+        JTextField textField = new JTextField();
+
+        textField.addKeyListener(new Game());
+        JFrame jframe = new JFrame();
+
+        jframe.add(textField);
+        jframe.setSize(100, 100);
+        jframe.setVisible(true);
+    }
+
     @Override
     public void keyPressed(KeyEvent event) {
 
@@ -65,7 +76,7 @@ class Game extends KeyAdapter {
     }
 
     private void printBoard() {
-        clearScreen();
+        Engine.clearScreen();
         String[][] board  = new String[width][height];
         board[this.player.getCoord().getX()][this.player.getCoord().getY()] = player.getSymbol();
 
@@ -118,14 +129,6 @@ class Game extends KeyAdapter {
 
         return x >= pivot.getX() && x < pivot.getX()+height
                 && y >= pivot.getY() && y < pivot.getY()+width;
-    }
-
-    public static void clearScreen() {
-        try {
-            new ProcessBuilder("clear").inheritIO().start().waitFor();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
 }
