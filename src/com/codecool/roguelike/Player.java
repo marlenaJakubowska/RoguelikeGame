@@ -2,7 +2,7 @@ package com.codecool.roguelike;
 
 public class Player extends Character {
     Coordinates coord;
-    String symbol = " @";
+    final String SYMBOL = " @";
 
     public Player() {
         this.coord = new Coordinates(5,5);
@@ -23,6 +23,6 @@ public class Player extends Character {
 
     @Override
     public String getSymbol() {
-        return this.symbol;
+        return this.SYMBOL;
     }
 }
