@@ -45,21 +45,25 @@ class Game extends KeyAdapter {
             case 'w':
                 if (canPlayerMove(Coordinates.w)) {
                     player.move(Coordinates.w, board);
+                    enemy.move(Coordinates.w, board);
                 }
                 break;
             case 's':
                 if (canPlayerMove(Coordinates.s)) {
                     player.move(Coordinates.s, board);
+                    enemy.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
                 if (canPlayerMove(Coordinates.a)) {
                     player.move(Coordinates.a, board);
+                    enemy.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
                 if (canPlayerMove(Coordinates.d)) {
                     player.move(Coordinates.d, board);
+                    enemy.move(Coordinates.d, board);
                 }
                 break;
         }
