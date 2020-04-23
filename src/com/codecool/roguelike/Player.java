@@ -28,7 +28,7 @@ public class Player extends GameObject {
     }
 
     public void interact(GameObject c) {
-        if (c != null && c instanceof Item) {
+        if (c instanceof Item) {
             Item item = (Item) c;
             items.add(item);
             System.out.println(item.getName().toString());
@@ -46,7 +46,7 @@ public class Player extends GameObject {
 
         System.out.println("inventory: ");
         for (int i = 0; i < items.size(); i++) {
-            inventory = new ArrayList<String>();
+            inventory = new ArrayList<>();
             inventory.add(items.get(i).getName());
 
             for (String s : inventory) {
