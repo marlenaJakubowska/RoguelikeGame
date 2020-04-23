@@ -10,6 +10,8 @@ public class Board {
     private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Obstacle> obstacles = new ArrayList<>();
 
+
+
     public Board(int height, int width) {
         board = new GameObject[height][width];
     }
@@ -18,22 +20,17 @@ public class Board {
         board[gameObject.getCoord().getX()][gameObject.getCoord().getY()] = gameObject;
     }
 
-    public void createObstacles() {
-        Obstacle wall1  = new Obstacle(new Coordinates(0, 0), width, 1, " #");
-        Obstacle wall2  = new Obstacle(new Coordinates(0, 0), 1, height, " #");
-        Obstacle wall3  = new Obstacle(new Coordinates(19, 0), width, 1, " #");
-        Obstacle wall4  = new Obstacle(new Coordinates(0, 19), 1, height, " #");
 
-        this.obstacles.add(wall1);
-        this.obstacles.add(wall2);
-        this.obstacles.add(wall3);
-        this.obstacles.add(wall4);
 
-        addObjectToTable(wall1);
-        addObjectToTable(wall2);
-        addObjectToTable(wall3);
-        addObjectToTable(wall4);
-    }
+   public GameObject getGameObjectByCoordinates(Coordinates moveCoordinates) {
+        return board[moveCoordinates.getX()][moveCoordinates.getY()];
+
+   }
+
+   public boolean checkIfObstacle(GameObject foundGameObject) {
+        return obstacles.contains(foundGameObject);
+   }
+
 
     public void createItems() {
         Item toiletPaper = new ItemToCollect(1,1,"toilet paper", " &", new Coordinates(7, 5));
@@ -75,4 +72,9 @@ public class Board {
     public ArrayList<Obstacle> getObstacle() {
         return obstacles;
     }
+
+    public int getHeight() {return this.height;}
+    public int getWidth() {return this.width;}
+
+    public void addObjectToObstacles(Obstacle obstacle) {this.obstacles.add(obstacle);}
 }
