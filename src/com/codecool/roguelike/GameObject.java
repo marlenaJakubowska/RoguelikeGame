@@ -4,8 +4,6 @@ public abstract class GameObject {
     protected Coordinates coord;
     private String symbol;
 
-    public GameObject(){}
-
     public GameObject(Coordinates coordinates, String symbol) {
         this.coord = coordinates;
         this.symbol = symbol;
