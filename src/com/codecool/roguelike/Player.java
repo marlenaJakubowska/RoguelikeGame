@@ -8,7 +8,6 @@ public class Player extends GameObject {
 
     private List<Item> items = new ArrayList<>();
     private List<String> inventory;
-    private HashMap<String, String> itemInventory;
 
     public Player(Coordinates coordinates) {
         super(coordinates, " @");
@@ -42,7 +41,7 @@ public class Player extends GameObject {
         return new Coordinates(x, y);
     }
 
-    public HashMap<String, String> addToInventory(String name) {
+    public List<String> addToInventory(String name) {
 
         System.out.println("inventory: ");
         for (int i = 0; i < items.size(); i++) {
@@ -55,7 +54,7 @@ public class Player extends GameObject {
             System.out.println();
         }
         System.out.println("\n");
-        return itemInventory;
+        return inventory;
     }
 
 }
