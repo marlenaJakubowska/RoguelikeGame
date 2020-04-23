@@ -1,9 +1,16 @@
 package com.codecool.roguelike;
 
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Engine {
+
+    private List<Obstacle> obstacleToLoop = new ArrayList<>();
+    public void addObstacleToObstacleToLoop(Obstacle newObstacle) {this.obstacleToLoop.add(newObstacle);}
+    private List<Item> itemToLoop = new ArrayList<>();
+    public void addItemToItemToLoop(Item newItem) {this.itemToLoop.add(newItem);}
 
     public void clearScreen() {
         try {
@@ -15,20 +22,20 @@ public class Engine {
 
     public void createWalls(Board board) {
         for(int i = 0; i <20; i++) {
-            Obstacle wallObject1 = new Obstacle(new Coordinates(0, i), " #");
-            Obstacle wallObject2 = new Obstacle(new Coordinates(19, i), " #");
-            Obstacle wallObject3 = new Obstacle(new Coordinates(i, 0), " #");
-            Obstacle wallObject4 = new Obstacle(new Coordinates(i, 19), " #");
-            board.addObjectToObstacles(wallObject1);
-            board.addObjectToObstacles(wallObject2);
-            board.addObjectToObstacles(wallObject3);
-            board.addObjectToObstacles(wallObject4);
+            Obstacle wall1 = new Obstacle(new Coordinates(0, i), " #");
+            Obstacle wall2 = new Obstacle(new Coordinates(19, i), " #");
+            Obstacle wall3 = new Obstacle(new Coordinates(i, 0), " #");
+            Obstacle wall4 = new Obstacle(new Coordinates(i, 19), " #");
 
-            board.addObjectToTable(wallObject1);
-            board.addObjectToTable(wallObject2);
-            board.addObjectToTable(wallObject3);
-            board.addObjectToTable(wallObject4);
+            addObstacleToObstacleToLoop(wall1);
+            addObstacleToObstacleToLoop(wall2);
+            addObstacleToObstacleToLoop(wall3);
+            addObstacleToObstacleToLoop(wall4);
 
+        }
+        for (Obstacle obstacle : obstacleToLoop) {
+            board.addObjectToObstacles(obstacle);
+            board.addObjectToTable(obstacle);
         }
     }
 
@@ -51,20 +58,22 @@ public class Engine {
     }
 
     public void createItems(Board board) {
-        Item toiletPaper = new ItemToCollect("toilet paper", " &", new Coordinates(7, 5));
-        Item gel = new ItemToCollect("antibacterial gel", " %", new Coordinates(3, 2));
-        Item gloves = new ItemToCollect("gloves", " !", new Coordinates(6, 2));
-        Item mask = new ItemToCollect("mask", " $", new Coordinates(5, 7));
+        for(int i = 0; i <20; i++) {
+            Item item1 = new ItemToCollect("toilet paper", " &", new Coordinates(7, 5));
+            Item item2 = new ItemToCollect("antibacterial gel", " %", new Coordinates(3, 2));
+            Item item3 = new ItemToCollect("gloves", " !", new Coordinates(6, 2));
+            Item item4 = new ItemToCollect("mask", " $", new Coordinates(5, 7));
 
-        board.addItemToItems(toiletPaper);
-        board.addItemToItems(gel);
-        board.addItemToItems(gloves);
-        board.addItemToItems(mask);
-        board.addObjectToTable(toiletPaper);
-        board.addObjectToTable(gel);
-        board.addObjectToTable(gloves);
-        board.addObjectToTable(mask);
+            addItemToItemToLoop(item1);
+            addItemToItemToLoop(item2);
+            addItemToItemToLoop(item3);
+            addItemToItemToLoop(item4);
 
+        }
+        for (Item item : itemToLoop) {
+            board.addItemToItems(item);
+            board.addObjectToTable(item);
+        }
     }
 }
 
