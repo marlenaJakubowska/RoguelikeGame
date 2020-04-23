@@ -1,28 +1,35 @@
 package com.codecool.roguelike;
 
-public class Player extends Character {
-    Coordinates coord;
-    final String SYMBOL = " @";
+import java.util.ArrayList;
 
-    public Player() {
-        this.coord = new Coordinates(5,5);
+public class Player extends GameObject {
+
+    private ArrayList<Item> items = new ArrayList<>();
+
+    public Player(Coordinates coordinates) {
+        super(coordinates, " @");
     }
 
     public Coordinates getCoord() {
         return this.coord;
     }
 
-    @Override
-    public void move(Coordinates direction) {
+    public void move(Coordinates direction, Board board) {
+        board.getBoard()[this.coord.getX()][this.coord.getY()] = null;
         System.out.println(direction.toString());
         int x = this.coord.getX() + direction.getX();
         int y = this.coord.getY() + direction.getY();
-
+        interact(board.getBoard()[x][y]);
         this.coord = new Coordinates(x, y);
+        board.getBoard()[this.coord.getX()][this.coord.getY()] = this;
     }
 
-    @Override
-    public String getSymbol() {
-        return this.SYMBOL;
+
+    public void interact(GameObject c) {
+        if (c != null && c instanceof Item) {
+            Item item = (Item) c;
+            items.add(item);
+            System.out.println(item.getName().toString());
+        }
     }
 }

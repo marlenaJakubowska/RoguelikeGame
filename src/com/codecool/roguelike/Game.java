@@ -7,16 +7,18 @@ import java.util.ArrayList;
 
 class Game extends KeyAdapter {
 
-    private Player player;
-    private final int width = 20;
-    private final int height = 20;
-    private ArrayList<Obstacle> obstacles;
+    private Board board = new Board(20, 20);
+    private Player player = new Player(new Coordinates(5, 5));
 
 
     public Game() {
-        player = new Player();
-        obstacles = new ArrayList<>();
-        createObstacles();
+        init();
+    }
+
+    private void init() {
+        board.createObstacles();
+        board.createItems();
+        this.board.addObjectToTable(player);
     }
 
     public static void runGame() {
@@ -40,22 +42,22 @@ class Game extends KeyAdapter {
         switch(ch) {
             case 'w':
                 if (canPlayerMove(Coordinates.w)) {
-                    player.move(Coordinates.w);
+                    player.move(Coordinates.w, board);
                 }
                 break;
             case 's':
                 if (canPlayerMove(Coordinates.s)) {
-                    player.move(Coordinates.s);
+                    player.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
                 if (canPlayerMove(Coordinates.a)) {
-                    player.move(Coordinates.a);
+                    player.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
                 if (canPlayerMove(Coordinates.d)) {
-                    player.move(Coordinates.d);
+                    player.move(Coordinates.d, board);
                 }
                 break;
         }
@@ -63,56 +65,16 @@ class Game extends KeyAdapter {
         printBoard();
     }
 
-    private void createObstacles() {
-        Obstacle wall1  = new Obstacle(new Coordinates(0, 0), width, 1, " #");
-        Obstacle wall2 = new Obstacle(new Coordinates(0,0), 1, height, "#");
-        Obstacle wall3 = new Obstacle(new Coordinates(19, 0), width, 1, "# ");
-        Obstacle wall4 = new Obstacle(new Coordinates(0, 19), 1, height-1, " #");
-        this.obstacles.add(wall1);
-        this.obstacles.add(wall2);
-        this.obstacles.add(wall3);
-        this.obstacles.add(wall4);
-
-    }
 
     private void printBoard() {
         Engine.clearScreen();
-        String[][] board  = new String[width][height];
-        board[this.player.getCoord().getX()][this.player.getCoord().getY()] = player.getSymbol();
-
-        printObstacles(board);
-
-        for(int i = 0; i< width;  i++) {
-            for(int j = 0; j< height; j++) {
-                if(board[i][j] != null) {
-                    System.out.print(board[i][j]);
-                    continue;
-                }
-                System.out.print(" .");
-            }
-            System.out.println();
-        }
-    }
-
-    public void printObstacles(String[][] board) {
-        for (Obstacle obstacle : obstacles) {
-            int width = obstacle.getWidth();
-            int height = obstacle.getHeight();
-            Coordinates pivot = obstacle.getPivot();
-
-            for (int i = pivot.getX(); i < pivot.getX()+height; i++) {
-                for(int j = pivot.getY(); j < pivot.getY()+width;j++) {
-                    board[i][j] = obstacle.getSymbol();
-                }
-            }
-        }
+        System.out.println(board);
     }
 
     public boolean canPlayerMove(Coordinates coord) {
 
-        for (Obstacle obstacle :obstacles) {
-            Coordinates pivot = obstacle.getPivot();
-
+        for (Obstacle obstacle : board.getObstacle()) {
+            Coordinates pivot = obstacle.getCoord();
             if (isPlayerInRange(obstacle, coord)) {
                 return false;
             }
@@ -123,14 +85,18 @@ class Game extends KeyAdapter {
     private boolean isPlayerInRange(Obstacle obstacle, Coordinates coord) {
         int width = obstacle.getWidth();
         int height = obstacle.getHeight();
-        Coordinates pivot = obstacle.getPivot();
+        Coordinates pivot = obstacle.getCoord();
         int x = this.player.getCoord().getX() + coord.getX();
         int y = this.player.getCoord().getY() + coord.getY();
 
         return x >= pivot.getX() && x < pivot.getX()+height
                 && y >= pivot.getY() && y < pivot.getY()+width;
     }
-
 }
-
-
+/*
+-item -inventory
+-remove from inventory
+-inventory obok mapy
+-weapon-spray antybakteryjny
+-food-bakłażan
+ */
