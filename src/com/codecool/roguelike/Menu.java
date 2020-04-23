@@ -20,7 +20,6 @@ public class Menu {
                     isRunning = false;
                     break;
                 }
-
                 case 2: {
                     System.out.println("Highscores - Work in progress");
                     break;
