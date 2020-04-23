@@ -9,7 +9,11 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
+
+    public Engine engine = new Engine();
+
     private  Enemy enemy = new Enemy(new Coordinates(7,7));
+
 
 
     public Game() {
@@ -17,7 +21,8 @@ class Game extends KeyAdapter {
     }
 
     private void init() {
-        board.createObstacles();
+
+        engine.createWallsFor(board);
         board.createItems();
         this.board.addObjectToTable(player);
         this.board.addObjectToTable(enemy);
@@ -39,26 +44,26 @@ class Game extends KeyAdapter {
 
         char ch = event.getKeyChar();
 
-        System.out.println((int)ch);
+        System.out.println((int) ch);
 
-        switch(ch) {
+        switch (ch) {
             case 'w':
-                if (canPlayerMove(Coordinates.w)) {
+                if (!cantPlayerMove(Coordinates.w)) {
                     player.move(Coordinates.w, board);
                 }
                 break;
             case 's':
-                if (canPlayerMove(Coordinates.s)) {
+                if (!cantPlayerMove(Coordinates.s)) {
                     player.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
-                if (canPlayerMove(Coordinates.a)) {
+                if (!cantPlayerMove(Coordinates.a)) {
                     player.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
-                if (canPlayerMove(Coordinates.d)) {
+                if (!cantPlayerMove(Coordinates.d)) {
                     player.move(Coordinates.d, board);
                 }
                 break;
@@ -67,38 +72,14 @@ class Game extends KeyAdapter {
         printBoard();
     }
 
-
     private void printBoard() {
-        Engine.clearScreen();
+        engine.clearScreen();
         System.out.println(board);
     }
 
-    public boolean canPlayerMove(Coordinates coord) {
-
-        for (Obstacle obstacle : board.getObstacle()) {
-            Coordinates pivot = obstacle.getCoord();
-            if (isPlayerInRange(obstacle, coord)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isPlayerInRange(Obstacle obstacle, Coordinates coord) {
-        int width = obstacle.getWidth();
-        int height = obstacle.getHeight();
-        Coordinates pivot = obstacle.getCoord();
-        int x = this.player.getCoord().getX() + coord.getX();
-        int y = this.player.getCoord().getY() + coord.getY();
-
-        return x >= pivot.getX() && x < pivot.getX()+height
-                && y >= pivot.getY() && y < pivot.getY()+width;
+    public boolean cantPlayerMove(Coordinates direction) {
+        Coordinates toMoveCoordinates = player.toMoveCoordinates(direction);
+        GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
+        return board.checkIfObstacle(foundGameObject);
     }
 }
-/*
--item -inventory
--remove from inventory
--inventory obok mapy
--weapon-spray antybakteryjny
--food-bakłażan
- */

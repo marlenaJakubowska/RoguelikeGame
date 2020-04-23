@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Player extends GameObject {
 
+
     private ArrayList<Item> items = new ArrayList<>();
 
     public Player(Coordinates coordinates) {
@@ -32,5 +33,11 @@ public class Player extends GameObject {
             items.add(item);
             System.out.println(item.getName().toString());
         }
+    }
+
+    public Coordinates toMoveCoordinates(Coordinates direction) {
+        int x = this.coord.getX() + direction.getX();
+        int y = this.coord.getY() + direction.getY();
+        return new Coordinates(x, y);
     }
 }
