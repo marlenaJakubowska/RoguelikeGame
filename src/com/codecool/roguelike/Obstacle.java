@@ -1,21 +1,13 @@
 package com.codecool.roguelike;
 
-public class Obstacle {
-    Coordinates pivot;
+public class Obstacle extends GameObject {
     int width;
     int height;
-    String symbol;
 
     public Obstacle(Coordinates pivot, int width, int height, String symbol) {
-        this.pivot = pivot;
+        super(pivot, symbol);
         this.width = width;
         this.height = height;
-        this.symbol = symbol;
-
-    }
-
-    public Coordinates getPivot() {
-        return pivot;
     }
 
     public int getWidth() {
@@ -25,10 +17,4 @@ public class Obstacle {
     public int getHeight() {
         return height;
     }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-
 }

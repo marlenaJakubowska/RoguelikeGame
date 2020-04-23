@@ -1,24 +1,9 @@
 package com.codecool.roguelike;
 
-public class Enemy extends Character {
-    Coordinates coord;
-    final String SYMBOL = " E";
+public class Enemy extends GameObject {
 
     public Enemy() {
-        this.coord = new Coordinates(8,8);
+        super(new Coordinates(8, 8), " X");
     }
 
-    public Coordinates getCoord() {
-        return this.coord;
-    }
-
-    @Override
-    public String getSymbol() {
-        return this.SYMBOL;
-    }
-
-    @Override
-    public void move(Coordinates direction) {
-
-    }
 }

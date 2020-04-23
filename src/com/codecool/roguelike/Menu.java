@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
+    private Ui print = new Ui();
     
-    public static void startMenu() {
+    public void startMenu() {
         boolean isRunning = true;
         while(isRunning) {
-            Ui.printMainMenu();
+            this.print.printMainMenu();
             int option = scanner.nextInt();
 
             switch(option) {
