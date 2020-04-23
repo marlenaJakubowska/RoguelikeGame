@@ -14,19 +14,6 @@ public class Engine {
     }
 
     public void createWalls(Board board) {
-
-        int i = 0;
-        while (i < 20) {
-            Obstacle wallObject = new Obstacle(new Coordinates(0, i), " #");
-            board.addObjectToObstacles(wallObject);
-            board.addObjectToTable(wallObject);
-            i++;
-
-        }
-
-    }
-
-    public void createWallsFor(Board board) {
         for(int i = 0; i <20; i++) {
             Obstacle wallObject1 = new Obstacle(new Coordinates(0, i), " #");
             Obstacle wallObject2 = new Obstacle(new Coordinates(19, i), " #");

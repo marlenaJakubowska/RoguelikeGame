@@ -73,6 +73,10 @@ public class Board {
         return obstacles;
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
     public int getHeight() {return this.height;}
     public int getWidth() {return this.width;}
 

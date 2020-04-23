@@ -9,12 +9,8 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
-
     public Engine engine = new Engine();
-
     private  Enemy enemy = new Enemy(new Coordinates(7,7));
-
-
 
     public Game() {
         init();
@@ -22,10 +18,11 @@ class Game extends KeyAdapter {
 
     private void init() {
 
-        engine.createWallsFor(board);
+        engine.createWalls(board);
         board.createItems();
         this.board.addObjectToTable(player);
         this.board.addObjectToTable(enemy);
+        board.getItems();
     }
 
     public static void runGame() {
@@ -43,8 +40,6 @@ class Game extends KeyAdapter {
     public void keyPressed(KeyEvent event) {
 
         char ch = event.getKeyChar();
-
-        System.out.println((int) ch);
 
         switch (ch) {
             case 'w':
@@ -68,7 +63,6 @@ class Game extends KeyAdapter {
                 }
                 break;
         }
-        System.out.println(player.getCoord().toString());
         printBoard();
     }
 
