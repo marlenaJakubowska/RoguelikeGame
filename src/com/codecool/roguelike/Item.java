@@ -8,28 +8,25 @@ public abstract class Item extends GameObject {
 
     private String name;
     private String symbol;
-    private int height;
-    private int width;
 
+<<<<<<< HEAD
 
     public Item(int width, int height, String name, String symbol, Coordinates pivot) {
+=======
+    public Item(String name, String symbol, Coordinates pivot) {
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
         super(pivot, symbol);
         this.name = name;
         this.symbol = symbol;
-        this.height = height;
-        this.width = width;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getHeight() {
-        return height;
-    }
+    public String toString() {
+        return this.symbol;
 
-    public int getWidth() {
-        return width;
     }
 
 

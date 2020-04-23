@@ -1,7 +1,6 @@
 package com.codecool.roguelike;
 
 public abstract class GameObject {
-
     protected Coordinates coord;
     private String symbol;
 
@@ -21,5 +20,6 @@ public abstract class GameObject {
     public Coordinates getCoord() {
         return this.coord;
     }
+
 
 }

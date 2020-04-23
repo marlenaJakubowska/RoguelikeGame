@@ -9,6 +9,9 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
+    private Engine engine = new Engine();
+    private  Enemy enemy = new Enemy(new Coordinates(7,7));
+    private Ui ui = new Ui();
 
 
     public Game() {
@@ -16,9 +19,15 @@ class Game extends KeyAdapter {
     }
 
     private void init() {
-        board.createObstacles();
-        board.createItems();
+
+        engine.createWalls(board);
+        engine.createForest(board);
+        engine.createItems(board);
         this.board.addObjectToTable(player);
+<<<<<<< HEAD
+=======
+        this.board.addObjectToTable(enemy);
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
         board.getItems();
     }
 
@@ -38,31 +47,30 @@ class Game extends KeyAdapter {
 
         char ch = event.getKeyChar();
 
-        System.out.println((int)ch);
-
-        switch(ch) {
+        switch (ch) {
             case 'w':
-                if (canPlayerMove(Coordinates.w)) {
+                if (!engine.isObstacle((Coordinates.w), player, board)) {
                     player.move(Coordinates.w, board);
 
                 }
                 break;
             case 's':
-                if (canPlayerMove(Coordinates.s)) {
+                if (!engine.isObstacle((Coordinates.s), player, board)) {
                     player.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
-                if (canPlayerMove(Coordinates.a)) {
+                if (!engine.isObstacle((Coordinates.a), player, board)) {
                     player.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
-                if (canPlayerMove(Coordinates.d)) {
+                if (!engine.isObstacle((Coordinates.d), player, board)) {
                     player.move(Coordinates.d, board);
                 }
                 break;
         }
+<<<<<<< HEAD
         printBoard();
     }
 
@@ -70,34 +78,9 @@ class Game extends KeyAdapter {
     private void printBoard() {
         Engine.clearScreen();
         System.out.println(board);
+=======
+        ui.printBoard(board);
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
     }
 
-    public boolean canPlayerMove(Coordinates coord) {
-
-        for (Obstacle obstacle : board.getObstacle()) {
-            Coordinates pivot = obstacle.getCoord();
-            if (isPlayerInRange(obstacle, coord)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isPlayerInRange(Obstacle obstacle, Coordinates coord) {
-        int width = obstacle.getWidth();
-        int height = obstacle.getHeight();
-        Coordinates pivot = obstacle.getCoord();
-        int x = this.player.getCoord().getX() + coord.getX();
-        int y = this.player.getCoord().getY() + coord.getY();
-
-        return x >= pivot.getX() && x < pivot.getX()+height
-                && y >= pivot.getY() && y < pivot.getY()+width;
-    }
 }
-/*
--item -inventory
--remove from inventory
--inventory obok mapy
--weapon-spray antybakteryjny
--food-bakłażan
- */

@@ -1,15 +1,17 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.ListIterator;
+=======
+import java.util.List;
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
 
 public class Board {
 
-    private int width;
-    private int height;
     private GameObject[][] board;
-    private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
+    private List<Obstacle> obstacles = new ArrayList<>();
 
 
 
@@ -21,12 +23,11 @@ public class Board {
         board[gameObject.getCoord().getX()][gameObject.getCoord().getY()] = gameObject;
     }
 
-    public void createObstacles() {
-        Obstacle wall1  = new Obstacle(new Coordinates(0, 0), width, 1, " #");
-        Obstacle wall2  = new Obstacle(new Coordinates(0, 0), 1, height, " #");
-        Obstacle wall3  = new Obstacle(new Coordinates(19, 0), width, 1, " #");
-        Obstacle wall4  = new Obstacle(new Coordinates(0, 19), 1, height, " #");
+   public GameObject getGameObjectByCoordinates(Coordinates moveCoordinates) {
+        return board[moveCoordinates.getX()][moveCoordinates.getY()];
+   }
 
+<<<<<<< HEAD
         this.obstacles.add(wall1);
         this.obstacles.add(wall2);
         this.obstacles.add(wall3);
@@ -56,6 +57,11 @@ public class Board {
         addObjectToTable(mask);
 
     }
+=======
+   public boolean checkIfObstacle(GameObject foundGameObject) {
+        return obstacles.contains(foundGameObject);
+   }
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
 
 
     public String toString() {
@@ -78,11 +84,16 @@ public class Board {
         return board;
     }
 
-    public ArrayList<Obstacle> getObstacle() {
-        return obstacles;
+    public List<Item> getItems() {
+        return items;
     }
 
+<<<<<<< HEAD
     public ArrayList<Item> getItems() {
         return items;
     }
+=======
+    public void addObjectToObstacles(Obstacle obstacle) {this.obstacles.add(obstacle);}
+    public void addItemToItems(Item item) {this.items.add(item);}
+>>>>>>> 02e5d8cd3b58b60e62246d719aa624ba3a52726b
 }
