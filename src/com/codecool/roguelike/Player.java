@@ -32,6 +32,7 @@ public class Player extends GameObject {
             Item item = (Item) c;
             items.add(item);
             System.out.println(item.getName().toString());
+            addToInventory(item.getName());
         }
     }
 
@@ -56,4 +57,5 @@ public class Player extends GameObject {
         System.out.println("\n");
         return itemInventory;
     }
+
 }

@@ -18,7 +18,6 @@ public class Enemy extends GameObject {
 
     public void move(Coordinates enemyDirection, Board board) {
         board.getBoard()[this.coord.getX()][this.coord.getY()] = null;
-        //System.out.println(enemyDirection.toString());
         int x = this.coord.getX() + enemyDirection.getX() + randomlySelectedMovementRange();
         int y = this.coord.getY() + enemyDirection.getY() + randomlySelectedMovementRange();
         //interact(board.getBoard()[x][y]);

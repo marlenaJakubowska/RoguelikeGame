@@ -9,8 +9,10 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
-    public Engine engine = new Engine();
+    private Engine engine = new Engine();
     private  Enemy enemy = new Enemy(new Coordinates(7,7));
+    private Ui ui = new Ui();
+
 
     public Game() {
         init();
@@ -20,7 +22,7 @@ class Game extends KeyAdapter {
 
         engine.createWalls(board);
         engine.createForest(board);
-        board.createItems();
+        engine.createItems(board);
         this.board.addObjectToTable(player);
         this.board.addObjectToTable(enemy);
         board.getItems();
@@ -44,37 +46,27 @@ class Game extends KeyAdapter {
 
         switch (ch) {
             case 'w':
-                if (!isObstacle(Coordinates.w)) {
+                if (!engine.isObstacle((Coordinates.w), player, board)) {
                     player.move(Coordinates.w, board);
                 }
                 break;
             case 's':
-                if (!isObstacle(Coordinates.s)) {
+                if (!engine.isObstacle((Coordinates.s), player, board)) {
                     player.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
-                if (!isObstacle(Coordinates.a)) {
+                if (!engine.isObstacle((Coordinates.a), player, board)) {
                     player.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
-                if (!isObstacle(Coordinates.d)) {
+                if (!engine.isObstacle((Coordinates.d), player, board)) {
                     player.move(Coordinates.d, board);
                 }
                 break;
         }
-        printBoard();
+        ui.printBoard(board);
     }
 
-    private void printBoard() {
-        engine.clearScreen();
-        System.out.println(board);
-    }
-
-    public boolean isObstacle(Coordinates direction) {
-        Coordinates toMoveCoordinates = player.toMoveCoordinates(direction);
-        GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
-        return board.checkIfObstacle(foundGameObject);
-    }
 }
