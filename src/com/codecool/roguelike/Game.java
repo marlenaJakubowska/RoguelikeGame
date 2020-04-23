@@ -45,25 +45,21 @@ class Game extends KeyAdapter {
             case 'w':
                 if (!isObstacle(Coordinates.w)) {
                     player.move(Coordinates.w, board);
-                    enemy.move(Coordinates.w, board);
                 }
                 break;
             case 's':
                 if (!isObstacle(Coordinates.s)) {
                     player.move(Coordinates.s, board);
-                    enemy.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
                 if (!isObstacle(Coordinates.a)) {
                     player.move(Coordinates.a, board);
-                    enemy.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
                 if (!isObstacle(Coordinates.d)) {
                     player.move(Coordinates.d, board);
-                    enemy.move(Coordinates.d, board);
                 }
                 break;
         }
@@ -80,4 +76,11 @@ class Game extends KeyAdapter {
         GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
         return board.checkIfObstacle(foundGameObject);
     }
+
+//    public boolean isObstacleEnemy(Coordinates direction) {
+//        Coordinates toMoveCoordinates = enemy.toMoveCoordinates(direction);
+//        GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
+//        return board.checkIfObstacle(foundGameObject);
+//    }
+
 }
