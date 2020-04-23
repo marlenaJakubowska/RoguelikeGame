@@ -10,6 +10,7 @@ public class Player extends GameObject {
         super(coordinates, " @");
     }
 
+
     public Coordinates getCoord() {
         return this.coord;
     }
