@@ -9,7 +9,11 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
+
     public Engine engine = new Engine();
+
+    private  Enemy enemy = new Enemy(new Coordinates(7,7));
+
 
 
     public Game() {
@@ -21,6 +25,7 @@ class Game extends KeyAdapter {
         engine.createWallsFor(board);
         board.createItems();
         this.board.addObjectToTable(player);
+        this.board.addObjectToTable(enemy);
     }
 
     public static void runGame() {

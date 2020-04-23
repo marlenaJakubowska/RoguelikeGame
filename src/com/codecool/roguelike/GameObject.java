@@ -1,7 +1,6 @@
 package com.codecool.roguelike;
 
 public abstract class GameObject {
-
     protected Coordinates coord;
     private String symbol;
 
