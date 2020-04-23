@@ -43,22 +43,22 @@ class Game extends KeyAdapter {
 
         switch (ch) {
             case 'w':
-                if (!cantPlayerMove(Coordinates.w)) {
+                if (!isObstacle(Coordinates.w)) {
                     player.move(Coordinates.w, board);
                 }
                 break;
             case 's':
-                if (!cantPlayerMove(Coordinates.s)) {
+                if (!isObstacle(Coordinates.s)) {
                     player.move(Coordinates.s, board);
                 }
                 break;
             case 'a':
-                if (!cantPlayerMove(Coordinates.a)) {
+                if (!isObstacle(Coordinates.a)) {
                     player.move(Coordinates.a, board);
                 }
                 break;
             case 'd':
-                if (!cantPlayerMove(Coordinates.d)) {
+                if (!isObstacle(Coordinates.d)) {
                     player.move(Coordinates.d, board);
                 }
                 break;
@@ -71,7 +71,7 @@ class Game extends KeyAdapter {
         System.out.println(board);
     }
 
-    public boolean cantPlayerMove(Coordinates direction) {
+    public boolean isObstacle(Coordinates direction) {
         Coordinates toMoveCoordinates = player.toMoveCoordinates(direction);
         GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
         return board.checkIfObstacle(foundGameObject);
