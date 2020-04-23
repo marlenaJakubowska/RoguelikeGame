@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Menu {
 
     private Scanner scanner = new Scanner(System.in);
-    private Ui print = new Ui();
+    public Ui print = new Ui();
     
     public void startMenu() {
         boolean isRunning = true;
@@ -25,7 +25,7 @@ public class Menu {
                     break;
                 }
                 case 3: {
-                    System.out.println("About - Work in progress");
+                    print.printAbout();
                     break;
                 }
                 case 0: {

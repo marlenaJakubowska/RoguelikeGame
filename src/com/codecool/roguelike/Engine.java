@@ -5,8 +5,6 @@ import java.util.Random;
 
 public class Engine {
 
-
-
     public void clearScreen() {
         try {
             new ProcessBuilder("clear").inheritIO().start().waitFor();
@@ -44,6 +42,29 @@ public class Engine {
             board.addObjectToObstacles(tree);
             board.addObjectToTable(tree);
         }
+    }
+
+    public boolean isObstacle(Coordinates direction, Player player, Board board) {
+        Coordinates toMoveCoordinates = player.toMoveCoordinates(direction);
+        GameObject foundGameObject = board.getGameObjectByCoordinates(toMoveCoordinates);
+        return board.checkIfObstacle(foundGameObject);
+    }
+
+    public void createItems(Board board) {
+        Item toiletPaper = new ItemToCollect("toilet paper", " &", new Coordinates(7, 5));
+        Item gel = new ItemToCollect("antibacterial gel", " %", new Coordinates(3, 2));
+        Item gloves = new ItemToCollect("gloves", " !", new Coordinates(6, 2));
+        Item mask = new ItemToCollect("mask", " $", new Coordinates(5, 7));
+
+        board.addItemToItems(toiletPaper);
+        board.addItemToItems(gel);
+        board.addItemToItems(gloves);
+        board.addItemToItems(mask);
+        board.addObjectToTable(toiletPaper);
+        board.addObjectToTable(gel);
+        board.addObjectToTable(gloves);
+        board.addObjectToTable(mask);
+
     }
 }
 
