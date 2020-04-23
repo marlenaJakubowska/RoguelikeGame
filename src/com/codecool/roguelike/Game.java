@@ -9,6 +9,7 @@ class Game extends KeyAdapter {
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
+    private  Enemy enemy = new Enemy(new Coordinates(7,7));
 
 
     public Game() {
@@ -19,6 +20,7 @@ class Game extends KeyAdapter {
         board.createObstacles();
         board.createItems();
         this.board.addObjectToTable(player);
+        this.board.addObjectToTable(enemy);
     }
 
     public static void runGame() {
