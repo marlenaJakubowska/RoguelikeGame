@@ -2,11 +2,12 @@ package com.codecool.roguelike;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Player extends GameObject {
 
-    private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<String> inventory;
+    private List<Item> items = new ArrayList<>();
+    private List<String> inventory;
     private HashMap<String, String> itemInventory;
 
     public Player(Coordinates coordinates) {

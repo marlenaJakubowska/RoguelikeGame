@@ -26,4 +26,9 @@ public abstract class Item extends GameObject {
     public int getWidth() {
         return width;
     }
+
+    public String toString() {
+        return this.symbol;
+
+    }
 }

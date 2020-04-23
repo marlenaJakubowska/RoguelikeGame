@@ -19,6 +19,7 @@ class Game extends KeyAdapter {
     private void init() {
 
         engine.createWalls(board);
+        engine.createForest(board);
         board.createItems();
         this.board.addObjectToTable(player);
         this.board.addObjectToTable(enemy);

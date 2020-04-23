@@ -1,14 +1,15 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
     private int width;
     private int height;
     private GameObject[][] board;
-    private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<Obstacle> obstacles = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
+    private List<Obstacle> obstacles = new ArrayList<>();
 
 
 
@@ -69,11 +70,11 @@ public class Board {
         return board;
     }
 
-    public ArrayList<Obstacle> getObstacle() {
+    public List<Obstacle> getObstacle() {
         return obstacles;
     }
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 

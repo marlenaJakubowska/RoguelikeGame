@@ -1,11 +1,12 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Enemy extends GameObject {
 
-    ArrayList<Integer> maxEnemyMovementRangeList = new ArrayList<>();
+    List<Integer> maxEnemyMovementRangeList = new ArrayList<>();
 
     public Enemy(Coordinates coordinates) {
         super(coordinates, " E");

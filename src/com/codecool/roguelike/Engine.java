@@ -1,8 +1,10 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Engine {
+
 
 
     public void clearScreen() {
@@ -29,6 +31,18 @@ public class Engine {
             board.addObjectToTable(wallObject3);
             board.addObjectToTable(wallObject4);
 
+        }
+    }
+
+    public void createForest(Board board) {
+        Random rand = new Random();
+
+        for(int i = 0; i < 100; i++) {
+            int x = rand.nextInt(18) +1;
+            int y = rand.nextInt(18) +1;
+            Obstacle tree = new Obstacle(new Coordinates(x, y), " ♈");
+            board.addObjectToObstacles(tree);
+            board.addObjectToTable(tree);
         }
     }
 }
