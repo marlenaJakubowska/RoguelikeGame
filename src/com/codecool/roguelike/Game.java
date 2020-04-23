@@ -19,6 +19,7 @@ class Game extends KeyAdapter {
         board.createObstacles();
         board.createItems();
         this.board.addObjectToTable(player);
+        board.getItems();
     }
 
     public static void runGame() {
@@ -43,6 +44,7 @@ class Game extends KeyAdapter {
             case 'w':
                 if (canPlayerMove(Coordinates.w)) {
                     player.move(Coordinates.w, board);
+
                 }
                 break;
             case 's':
@@ -61,7 +63,6 @@ class Game extends KeyAdapter {
                 }
                 break;
         }
-        System.out.println(player.getCoord().toString());
         printBoard();
     }
 

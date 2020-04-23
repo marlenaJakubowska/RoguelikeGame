@@ -1,6 +1,7 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Board {
 
@@ -9,6 +10,8 @@ public class Board {
     private GameObject[][] board;
     private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Obstacle> obstacles = new ArrayList<>();
+
+
 
     public Board(int height, int width) {
         board = new GameObject[height][width];
@@ -36,6 +39,7 @@ public class Board {
     }
 
     public void createItems() {
+
         Item toiletPaper = new ItemToCollect(1,1,"toilet paper", " &", new Coordinates(7, 5));
         Item gel = new ItemToCollect(1, 1,"antibacterial gel", " %", new Coordinates(3, 2));
         Item gloves = new ItemToCollect(1, 1,"gloves", " !", new Coordinates(6, 2));
@@ -50,7 +54,9 @@ public class Board {
         addObjectToTable(gel);
         addObjectToTable(gloves);
         addObjectToTable(mask);
+
     }
+
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -74,5 +80,9 @@ public class Board {
 
     public ArrayList<Obstacle> getObstacle() {
         return obstacles;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
     }
 }

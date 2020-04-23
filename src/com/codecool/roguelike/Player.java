@@ -1,10 +1,14 @@
 package com.codecool.roguelike;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player extends GameObject {
 
     private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<String> inventory;
+    private HashMap<String, String> itemInventory;
+
 
     public Player(Coordinates coordinates) {
         super(coordinates, " @");
@@ -16,7 +20,6 @@ public class Player extends GameObject {
 
     public void move(Coordinates direction, Board board) {
         board.getBoard()[this.coord.getX()][this.coord.getY()] = null;
-        System.out.println(direction.toString());
         int x = this.coord.getX() + direction.getX();
         int y = this.coord.getY() + direction.getY();
         interact(board.getBoard()[x][y]);
@@ -29,7 +32,23 @@ public class Player extends GameObject {
         if (c != null && c instanceof Item) {
             Item item = (Item) c;
             items.add(item);
-            System.out.println(item.getName().toString());
+            addToInventory(item.getName());
         }
+    }
+
+    public HashMap<String, String> addToInventory(String name) {
+
+        System.out.println("inventory: ");
+        for (int i = 0; i < items.size(); i++) {
+            inventory = new ArrayList<String>();
+            inventory.add(items.get(i).getName());
+
+            for (String s : inventory) {
+                System.out.print(String.format("*%s", s));
+            }
+            System.out.println();
+            }
+        System.out.println("\n");
+        return itemInventory;
     }
 }

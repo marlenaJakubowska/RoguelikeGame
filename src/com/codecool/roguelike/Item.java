@@ -1,11 +1,16 @@
 package com.codecool.roguelike;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
 public abstract class Item extends GameObject {
 
     private String name;
     private String symbol;
     private int height;
     private int width;
+
 
     public Item(int width, int height, String name, String symbol, Coordinates pivot) {
         super(pivot, symbol);
@@ -26,4 +31,6 @@ public abstract class Item extends GameObject {
     public int getWidth() {
         return width;
     }
+
+
 }
