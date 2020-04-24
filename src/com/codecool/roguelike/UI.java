@@ -1,8 +1,6 @@
 package com.codecool.roguelike;
 
-import java.util.ArrayList;
-
-public class Ui {
+public class UI {
 
     private Engine engine = new Engine();
 
@@ -19,13 +17,13 @@ public class Ui {
         System.out.println(board);
     }
 
-    public void printGameInfo(){
+    public void printGameInfo() {
         System.out.println("\nSpring 2020, the world has fallen. New virus has spread across countries. \n"
-                +"You as a survivor need supplies. Your goal is to collect them from forest\n"
-                +"WATCH OUT FOR ENEMIES\n"
+                + "You as a survivor need supplies. Your goal is to collect them from forest\n"
+                + "WATCH OUT FOR ENEMIES\n"
                 + "\nDevelopers:\n"
-                +"Dominika Jarek\n"
-                +"Artur Jakubowski\n"
-                +"Marlena Jakubowska\n");
+                + "Dominika Jarek\n"
+                + "Artur Jakubowski\n"
+                + "Marlena Jakubowska\n");
     }
 }
