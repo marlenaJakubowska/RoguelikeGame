@@ -19,13 +19,13 @@ class Game extends KeyAdapter {
     }
 
     private void init() {
+        board.getItems();
 
         engine.createWalls(board);
         engine.createForest(board);
         engine.createItems(board);
         this.board.addObjectToTable(player);
         this.board.addObjectToTable(enemy);
-        board.getItems();
     }
 
     public static void runGame() {
@@ -67,6 +67,7 @@ class Game extends KeyAdapter {
                 break;
         }
         ui.printBoard(board);
+        player.addToInventory(board.getItems().toString());
     }
 
 }
