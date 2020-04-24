@@ -25,7 +25,7 @@ public class Menu {
                     break;
                 }
                 case 3: {
-                    print.printAbout();
+                    print.printGameInfo();
                     break;
                 }
                 case 0: {

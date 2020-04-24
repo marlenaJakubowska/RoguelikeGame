@@ -14,15 +14,18 @@ public class Ui {
         System.out.println("0. Exit");
     }
 
-    public void printAbout() {
-        System.out.println("Merging around:");
-        System.out.println("    Dominika");
-        System.out.println("    Artur");
-        System.out.println("    Marlena");
-    }
-
     public void printBoard(Board board) {
         engine.clearScreen();
         System.out.println(board);
+    }
+
+    public void printGameInfo(){
+        System.out.println("\nSpring 2020, the world has fallen. New virus has spread across countries. \n"
+                +"You as a survivor need supplies. Your goal is to collect them from forest\n"
+                +"WATCH OUT FOR ENEMIES\n"
+                + "\nDevelopers:\n"
+                +"Dominika Jarek\n"
+                +"Artur Jakubowski\n"
+                +"Marlena Jakubowska\n");
     }
 }
