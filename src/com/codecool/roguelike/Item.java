@@ -2,8 +2,8 @@ package com.codecool.roguelike;
 
 public abstract class Item extends GameObject {
 
-    private String name;
-    private String symbol;
+    private final String name;
+    private final String symbol;
 
     public Item(String name, String symbol, Coordinates pivot) {
         super(pivot, symbol);

@@ -17,13 +17,13 @@ public class Board {
         board[gameObject.getCoord().getX()][gameObject.getCoord().getY()] = gameObject;
     }
 
-   public GameObject getGameObjectByCoordinates(Coordinates moveCoordinates) {
+    public GameObject getGameObjectByCoordinates(Coordinates moveCoordinates) {
         return board[moveCoordinates.getX()][moveCoordinates.getY()];
-   }
+    }
 
-   public boolean checkIfObstacle(GameObject foundGameObject) {
-        return obstacles.contains(foundGameObject);
-   }
+    public boolean checkIfObstacle(GameObject foundGameObject) {
+        return foundGameObject instanceof Obstacle;
+    }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -31,8 +31,7 @@ public class Board {
             for (GameObject column : row) {
                 if (column != null) {
                     sb.append(column);
-                }
-                else {
+                } else {
                     sb.append(" .");
                 }
             }
@@ -50,5 +49,6 @@ public class Board {
     }
 
     public void addObjectToObstacles(Obstacle obstacle) {this.obstacles.add(obstacle);}
+
     public void addItemToItems(Item item) {this.items.add(item);}
 }

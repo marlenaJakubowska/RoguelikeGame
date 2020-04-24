@@ -3,15 +3,19 @@ package com.codecool.roguelike;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 class Game extends KeyAdapter {
+
+    private final char UP = 'w';
+    private final char DOWN = 's';
+    private final char LEFT = 'a';
+    private final char RIGHT = 'd';
 
     private Board board = new Board(20, 20);
     private Player player = new Player(new Coordinates(5, 5));
     private Engine engine = new Engine();
     private  Enemy enemy = new Enemy(new Coordinates(7,7));
-    private Ui ui = new Ui();
+    private UI ui = new UI();
 
 
     public Game() {
@@ -41,33 +45,42 @@ class Game extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent event) {
-
-        char ch = event.getKeyChar();
-
-        switch (ch) {
-            case 'w':
-                if (!engine.isObstacle((Coordinates.w), player, board)) {
-                    player.move(Coordinates.w, board);
+        char userInput = event.getKeyChar();
+        switch (userInput) {
+            case UP:
+                if (canMoveInDirection(Coordinates.UP)) {
+                    moveInDirection(Coordinates.UP);
                 }
                 break;
-            case 's':
-                if (!engine.isObstacle((Coordinates.s), player, board)) {
-                    player.move(Coordinates.s, board);
+            case DOWN:
+                if (canMoveInDirection(Coordinates.DOWN)) {
+                    moveInDirection(Coordinates.DOWN);
                 }
                 break;
-            case 'a':
-                if (!engine.isObstacle((Coordinates.a), player, board)) {
-                    player.move(Coordinates.a, board);
+            case LEFT:
+                if (canMoveInDirection(Coordinates.LEFT)) {
+                    moveInDirection(Coordinates.LEFT);
                 }
                 break;
-            case 'd':
-                if (!engine.isObstacle((Coordinates.d), player, board)) {
-                    player.move(Coordinates.d, board);
+            case RIGHT:
+                if (canMoveInDirection(Coordinates.RIGHT)) {
+                    moveInDirection(Coordinates.RIGHT);
                 }
                 break;
         }
+        // for enemy in enemies
+        // enemy.move();
+
         ui.printBoard(board);
-        player.addToInventory(board.getItems().toString());
+        player.printInventory();
+    }
+
+    private void moveInDirection(Coordinates coordinates) {
+        player.move(coordinates, board);
+    }
+
+    private boolean canMoveInDirection(Coordinates up) {
+        return !engine.isObstacle((up), player, board);
     }
 
 }
